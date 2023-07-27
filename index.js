@@ -8,7 +8,7 @@
 // }, 1000)
 
 let quizDiv = document.querySelector("#quiz");
-let beginDiv = document.querySelector("#begin")
+let beginDiv = document.querySelector("#begin");
 let questionButton1 = document.querySelector("#answer1");
 let highScores = JSON.parse(localStorage.getItem("high scores")) || [];
 
@@ -49,7 +49,7 @@ function renderQuestion() {
 document.addEventListener("click", myFunction);
 
 function myFunction() {
-    document.getElementById("demo").innerHTML = "Hello World";
+    document.querySelector("#start").innerHTML = "Hello World";
   }
 
 
