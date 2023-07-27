@@ -8,7 +8,9 @@
 // }, 1000)
 
 let quizDiv = document.querySelector("#quiz");
+let beginDiv = document.querySelector("#begin")
 let questionButton1 = document.querySelector("#answer1");
+let highScores = JSON.parse(localStorage.getItem("high scores")) || [];
 
 
 
@@ -43,7 +45,24 @@ function renderQuestion() {
     console.log("correct Answer " + questions[currentQuestion].correctAnswer)
 
 }
+// trying to create start button
+document.addEventListener("click", myFunction);
 
+function myFunction() {
+    document.getElementById("demo").innerHTML = "Hello World";
+  }
+
+
+  
+beginDiv.addEventListener("click", function startQuiz() {
+    
+})
+
+function startQuiz() {
+    console.log("doing something")
+}
+
+// trying to create start button
 
 
 quizDiv.addEventListener("click", function (event) {
@@ -51,9 +70,16 @@ quizDiv.addEventListener("click", function (event) {
     if (event.target.matches("button")) {
 
         console.log("clicked!")
-        console.log("value" + event.target.innerText)
+        console.log("value " + event.target.innerText)
+        console.log("correct answer" + questions[currentQuestion].correctAnswer);
+
         currentQuestion++
         renderQuestion();
     }
 
 })
+
+
+
+// some button that saves
+// localStorage.setItem("high scores", JSON.stringify([{"initials": "JTD", "score" : "80"}]))
