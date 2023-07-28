@@ -1,15 +1,20 @@
-//  let timer = 90
+ let timer;
+ let timeLeft = 0;
 
-// let timerId = setInterval(function () {
+let timerId = setInterval(function () {
 
-//     timer -= 1
-//     console.log(timer);
+    timer -= 1
+    console.log(timer);
 
-// }, 1000)
+}, 1000)
+// working on timer, to get it on the screen
 
 let quizDiv = document.querySelector("#quiz");
 let beginDiv = document.querySelector("#begin");
 let cat = document.querySelector("#question");
+
+let timerPlaceholder = document.querySelector("#timer");
+
 let answerButton1 = document.querySelector("#answer1");
 let answerButton2 = document.querySelector("#answer2");
 let answerButton3 = document.querySelector("#answer3");
@@ -67,6 +72,16 @@ function myFunction() {
 
 
 function startQuiz() {
+    timeLeft = 90;
+    document.querySelector("#timerEl").textContent = timeLeft;
+    timer = setInterval(function (){
+    timeLeft--
+    document.querySelector("#timerEl").textContent= timeLeft
+    if (timeLeft >=90) {
+        
+    }
+    }
+    );
     console.log("doing something")
     beginDiv.classList.toggle("hide")
     quizDiv.classList.toggle("hide")
