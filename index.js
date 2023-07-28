@@ -1,13 +1,5 @@
- let timer;
- let timeLeft = 0;
+let timer = 100;
 
-let timerId = setInterval(function () {
-
-    timer -= 1
-    console.log(timer);
-
-}, 1000)
-// working on timer, to get it on the screen
 
 let quizDiv = document.querySelector("#quiz");
 let beginDiv = document.querySelector("#begin");
@@ -20,20 +12,20 @@ let answerButton2 = document.querySelector("#answer2");
 let answerButton3 = document.querySelector("#answer3");
 let answerButton4 = document.querySelector("#answer4");
 let highScores = JSON.parse(localStorage.getItem("high scores")) || [];
-
+let finished = document.querySelector("#finished");
 
 
 let questions = [{ question: "Which pokemon does Ash get at the start of pokemon?", answers: ["charmander", "squirtle", "bulbasaur", "pikachu"], correctAnswer: "pikachu" },
 
-{ question: "Which pokemon is able to deal fire damage?", answers: [ "squirtle", "charmander","pikachu", "bulbasaur",], correctAnswer: "charmander" },
+{ question: "Which pokemon is able to deal fire damage?", answers: ["squirtle", "charmander", "pikachu", "bulbasaur",], correctAnswer: "charmander" },
 
 { question: "Which pokemon is weak to electric damage?", answers: ["bulbasaur", "charmander", "pikachu", "squirtle"], correctAnswer: "squirtle" },
 
 { question: "Which pokemon is able to learn razor leaf?", answers: ["squirtle", "pikachu", "bulbasaur", "charmander"], correctAnswer: "bulbasaur" },
 
-{ question: "Which pokemon is blue?", answers: ["bulbasaur",  "squirtle", "charmander", "pikachu"], correctAnswer: "squirtle" },
+{ question: "Which pokemon is blue?", answers: ["bulbasaur", "squirtle", "charmander", "pikachu"], correctAnswer: "squirtle" },
 
-{ question: "Which pokemon evolves with a thunder stone?", answers: ["pikachu", "bulbasaur","charmander", "squirtle"], correctAnswer: "pickachu" },
+{ question: "Which pokemon evolves with a thunder stone?", answers: ["pikachu", "bulbasaur", "charmander", "squirtle"], correctAnswer: "pickachu" },
 
 { question: "Which pokemon is able to weak to water damage?", answers: ["charmander", "squirtle", "bulbasaur", "squirtle"], correctAnswer: "charmander" },
 
@@ -44,21 +36,18 @@ let questions = [{ question: "Which pokemon does Ash get at the start of pokemon
 let currentQuestion = 0
 renderQuestion();
 
+
 function renderQuestion() {
 
-    // console.log(questions[currentQuestion].question)
-    cat. textContent = questions [currentQuestion].question
-    answerButton1. textContent = questions[currentQuestion].answers[0];
-    answerButton2. textContent = questions[currentQuestion].answers[1];
-    answerButton3. textContent = questions[currentQuestion].answers[2];
-    answerButton4. textContent = questions[currentQuestion].answers[3];
-    // console.log(questions[currentQuestion].answers[1])
-    // console.log(questions[currentQuestion].answers[2])
-    // console.log(questions[currentQuestion].answers[3])
-    // console.log("correct Answer " + questions[currentQuestion].correctAnswer)
-
+    cat.textContent = questions[currentQuestion].question
+    answerButton1.textContent = questions[currentQuestion].answers[0];
+    answerButton2.textContent = questions[currentQuestion].answers[1];
+    answerButton3.textContent = questions[currentQuestion].answers[2];
+    answerButton4.textContent = questions[currentQuestion].answers[3];
 }
-// trying to create start button
+if (currentQuestion !== questions) {
+    gameOver();
+}
 
 let startButtonEl = document.querySelector("#start")
 
@@ -66,41 +55,39 @@ startButtonEl.addEventListener("click", startQuiz);
 
 function myFunction() {
     startButtonEl.innerHTML = "Hello World";
-  }
+}
 
 
 
 
 function startQuiz() {
-    timeLeft = 90;
-    document.querySelector("#timerEl").textContent = timeLeft;
-    timer = setInterval(function (){
-    timeLeft--
-    document.querySelector("#timerEl").textContent= timeLeft
-    if (timeLeft >=90) {
-        
-    }
-    }
-    );
-    console.log("doing something")
+    document.querySelector("#timerEl").textContent = timer;
+    let timerInterval = setInterval(function () {
+        timer--
+        document.querySelector("#timerEl").textContent = timer
+        if (timer <= 0) {
+            clearInterval(timerInterval)
+           
+
+        }
+    }, 1000);
+
     beginDiv.classList.toggle("hide")
     quizDiv.classList.toggle("hide")
 }
 
-// trying to create start button
+
 
 
 quizDiv.addEventListener("click", function (event) {
 
     if (event.target.matches("button")) {
 
-        // console.log("clicked!")
-        // console.log("value " + event.target.innerText) 
-        // console.log("correct answer " + questions[currentQuestion].correctAnswer);
         if (event.target.innerText === questions[currentQuestion].correctAnswer) {
             console.log("You got it Right!")
         } else {
             console.log("you got it wrong");
+            timer -= 5;
         }
 
         currentQuestion++
@@ -109,7 +96,10 @@ quizDiv.addEventListener("click", function (event) {
 
 })
 
+gameOver();
+function gameOver() {
+    document.querySelector("#finished")
+}
 
-
-// some button that saves
-// localStorage.setItem("high scores", JSON.stringify([{"initials": "JTD", "score" : "80"}]))
+// page that says quiz is Over. highscores, inititials.
+// type inititals in and see their final score.
