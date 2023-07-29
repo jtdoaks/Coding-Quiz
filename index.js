@@ -14,8 +14,7 @@ let answerButton4 = document.querySelector("#answer4");
 let highScores = JSON.parse(localStorage.getItem("high scores")) || [];
 let finished = document.querySelector("#finished");
 
-
-let questions = [{ question: "Which pokemon does Ash get at the start of pokemon?", answers: ["charmander", "squirtle", "bulbasaur", "pikachu"], correctAnswer: "pikachu" },
+let questions = [{ question: "Which pokemon does Ash get to start pokemon?", answers: ["charmander", "squirtle", "bulbasaur", "pikachu"], correctAnswer: "pikachu" },
 
 { question: "Which pokemon is able to deal fire damage?", answers: ["squirtle", "charmander", "pikachu", "bulbasaur",], correctAnswer: "charmander" },
 
@@ -30,7 +29,7 @@ let questions = [{ question: "Which pokemon does Ash get at the start of pokemon
 { question: "Which pokemon is able to weak to water damage?", answers: ["charmander", "squirtle", "bulbasaur", "squirtle"], correctAnswer: "charmander" },
 
 { question: "Which pokemon evoles to ivysaur?", answers: ["bulbasaur", "squirtle", "charmander", "pikachu"], correctAnswer: "bulbasaur" },
-]
+];
 
 
 let currentQuestion = 0
@@ -44,10 +43,16 @@ function renderQuestion() {
     answerButton2.textContent = questions[currentQuestion].answers[1];
     answerButton3.textContent = questions[currentQuestion].answers[2];
     answerButton4.textContent = questions[currentQuestion].answers[3];
+    if (currentQuestion === questions.length - 1) {
+        console.log("working")
+        console.log("game over")
+        finishedEl.classList.toggle("hide")
+        quizDiv.classList.toggle("hide")
+    };
 }
-if (currentQuestion !== questions) {
-    gameOver();
-}
+
+
+
 
 let startButtonEl = document.querySelector("#start")
 
@@ -67,7 +72,7 @@ function startQuiz() {
         document.querySelector("#timerEl").textContent = timer
         if (timer <= 0) {
             clearInterval(timerInterval)
-           
+
 
         }
     }, 1000);
@@ -96,10 +101,6 @@ quizDiv.addEventListener("click", function (event) {
 
 })
 
-gameOver();
-function gameOver() {
-    document.querySelector("#finished")
-}
 
 // page that says quiz is Over. highscores, inititials.
 // type inititals in and see their final score.
