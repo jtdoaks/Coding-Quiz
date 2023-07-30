@@ -44,10 +44,11 @@ function renderQuestion() {
     answerButton3.textContent = questions[currentQuestion].answers[2];
     answerButton4.textContent = questions[currentQuestion].answers[3];
     if (currentQuestion === questions.length - 1) {
-        console.log("working")
+       
         console.log("game over")
         finishedEl.classList.toggle("hide")
         quizDiv.classList.toggle("hide")
+        inputs.classList.toggle("hide")
     };
 }
 
