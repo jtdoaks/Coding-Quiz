@@ -1,10 +1,96 @@
 .header {
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
 }
 
 
 
 .hide {
     display: none
+}
+
+body {
+    font-family: 'Comic Sans MS', sans-serif;
+    text-align: center;
+    background-color: #FFD700; 
+    color: #FF4500; 
+}
+
+
+#begin, #quiz, #leaderboard, #finishedEl, #finalScore, #inputs {
+    margin: 20px;
+}
+
+#start, #viewHighScores {
+    font-family: 'Comic Sans MS', sans-serif;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: #00CED1; 
+    color: #fff;
+    cursor: pointer;
+}
+
+#question {
+    margin-top: 30px;
+}
+
+button {
+    font-family: 'Comic Sans MS', sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 20px;
+    background-color: #FF6347; 
+    color: black;
+    cursor: pointer;
+}
+
+#inputs label {
+    display: block;
+    margin-top: 10px;
+}
+
+#inputs input[type="text"], #inputs input[type="submit"] {
+    font-family: 'Comic Sans MS', sans-serif;
+    font-size: 16px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    background-color: #00FF7F; /* SpringGreen button color */
+    color: #fff;
+    cursor: pointer;
+}
+
+#leaderboard {
+    list-style: none;
+    padding: 0;
+}
+
+#leaderboard li {
+    font-family: 'Comic Sans MS', sans-serif;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.hide {
+    display: none;
+}
+
+
+#answer1 {
+    background-color: #df2b0b; 
+}
+
+#answer2 {
+    background-color: #1E90FF; 
+}
+
+#answer3 {
+    background-color: #00FF00; 
+}
+
+#answer4 {
+    background-color: #FFFF00; 
 }

@@ -15,21 +15,21 @@ let finalScoreEl = document.querySelector("#finalScore");
 let finalScore = 0;
 let highScores = JSON.parse(localStorage.getItem("high-scores")) || [];
 
-let questions = [{ question: "Which pokemon does Ash get to start pokemon?", answers: ["charmander", "squirtle", "bulbasaur", "pikachu"], correctAnswer: "pikachu" },
+let questions = [{ question: "Which pokemon does Ash get to start pokemon?", answers: ["Charmander", "Squirtle", "Bulbasaur", "Pikachu"], correctAnswer: "Pikachu" },
 
-{ question: "Which pokemon is able to deal fire damage?", answers: ["squirtle", "charmander", "pikachu", "bulbasaur",], correctAnswer: "charmander" },
+{ question: "Which pokemon is able to deal fire damage?", answers: ["Squirtle", "Charmander", "Pikachu", "Bulbasaur",], correctAnswer: "Charmander" },
 
-{ question: "Which pokemon is weak to electric damage?", answers: ["bulbasaur", "charmander", "pikachu", "squirtle"], correctAnswer: "squirtle" },
+{ question: "Which pokemon is weak to electric damage?", answers: ["Bulbasaur", "Charmander", "Pikachu", "Squirtle"], correctAnswer: "Squirtle" },
 
-{ question: "Which pokemon is able to learn razor leaf?", answers: ["squirtle", "pikachu", "bulbasaur", "charmander"], correctAnswer: "bulbasaur" },
+{ question: "Which pokemon is able to learn razor leaf?", answers: ["Squirtle", "Pikachu", "Bulbasaur", "Charmander"], correctAnswer: "Bulbasaur" },
 
-{ question: "Which pokemon is blue?", answers: ["bulbasaur", "squirtle", "charmander", "pikachu"], correctAnswer: "squirtle" },
+{ question: "Which pokemon is blue?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Squirtle" },
 
-{ question: "Which pokemon evolves with a thunder stone?", answers: ["pikachu", "bulbasaur", "charmander", "squirtle"], correctAnswer: "pickachu" },
+{ question: "Which pokemon evolves with a thunder stone?", answers: ["Pikachu", "Bulbasaur", "Charmander", "Squirtle"], correctAnswer: "pickachu" },
 
-{ question: "Which pokemon is able to weak to water damage?", answers: ["charmander", "squirtle", "bulbasaur", "squirtle"], correctAnswer: "charmander" },
+{ question: "Which pokemon is able to weak to water damage?", answers: ["Charmander", "Squirtle", "Bulbasaur", "Squirtle"], correctAnswer: "Charmander" },
 
-{ question: "Which pokemon evoles to ivysaur?", answers: ["bulbasaur", "squirtle", "charmander", "pikachu"], correctAnswer: "bulbasaur" },
+{ question: "Which pokemon evoles to ivysaur?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Bulbasaur" },
 ];
 
 
@@ -39,7 +39,7 @@ renderQuestion();
 
 function renderQuestion() {
     if (currentQuestion >= questions.length) {
-       clearInterval(timerInterval);
+        clearInterval(timerInterval);
         console.log("game over")
         finishedEl.classList.toggle("hide")
         quizDiv.classList.toggle("hide")
@@ -85,8 +85,8 @@ quizDiv.addEventListener("click", function (event) {
 
         if (event.target.innerText === questions[currentQuestion].correctAnswer) {
             console.log("You got it Right!");
-            finalScore ++;
-           
+            finalScore++;
+
         } else {
             console.log("you got it wrong");
             timer -= 5;
@@ -98,10 +98,10 @@ quizDiv.addEventListener("click", function (event) {
 
 })
 
-inputs.addEventListener("submit", function (event){
+inputs.addEventListener("submit", function (event) {
     event.preventDefault();
     let userInitials = document.querySelector("#userInitials").value;
-    let user = {initials: userInitials, score: timer}
+    let user = { initials: userInitials, score: timer }
     highScores.push(user);
     localStorage.setItem("high-scores", JSON.stringify(highScores))
     inputs.classList.toggle("hide");
@@ -113,5 +113,15 @@ inputs.addEventListener("submit", function (event){
         leaderboard.append(li);
     }
 })
-// page that says quiz is Over. highscores, inititials.
-// type inititals in and see their final score.
+
+viewHighScores.addEventListener('click', function (event){
+    event.preventDefault();
+    finishedEl.classList.toggle("hide");
+    leaderboard.classList.toggle("hide");
+    for (let i = 0; i < highScores.length; i++) {
+        const element = highScores[i];
+        let li = document.createElement("li");
+        li.textContent = "player: " + element.initials + " -- score: " + element.score;
+        leaderboard.append(li);
+    }
+})
