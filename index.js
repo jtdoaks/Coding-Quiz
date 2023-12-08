@@ -1,4 +1,4 @@
-let timer = 100;
+let timer = 90;
 let timerInterval;
 let quizDiv = document.querySelector("#quiz");
 let beginDiv = document.querySelector("#begin");
@@ -67,6 +67,9 @@ function startQuiz() {
     timerInterval = setInterval(function () {
         timer--
         document.querySelector("#timerEl").textContent = timer
+
+        timerBackground()
+
         if (timer <= 0) {
             clearInterval(timerInterval)
 
@@ -76,8 +79,26 @@ function startQuiz() {
 
     beginDiv.classList.toggle("hide")
     quizDiv.classList.toggle("hide")
+    document.querySelector("#timerDiv").style.display = "block";
 }
 
+function timerBackground() {
+    let timerDiv = document.querySelector("#timerDiv");
+
+    
+    if (timer <= 10) {
+        timerDiv.style.backgroundColor = "red";
+    } else if (timer <= 30) {
+        timerDiv.style.backgroundColor = "orange";
+    } else if (timer <= 60) {
+        timerDiv.style.backgroundColor = "green";
+    } else {
+        timerDiv.style.backgroundColor = "#fff"; 
+
+    }
+
+   
+}
 
 quizDiv.addEventListener("click", function (event) {
 

@@ -35,6 +35,7 @@ body {
     font-size: 18px;
     padding: 10px 20px;
     border-radius: 20px;
+    
     background-color: #00CED1; 
     color: #fff;
     cursor: pointer;
@@ -52,6 +53,7 @@ button {
     border-radius: 20px;
     color: black;
     cursor: pointer;
+    
 }
 
 #inputs label {
@@ -96,4 +98,21 @@ button {
 
 #answer4 {
     background-color: #FFFF00; 
+}
+
+
+
+#timerEl {
+    font-size: 30px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+#timerDiv {
+    display: none;
+    border: 2px solid black; 
+    border-radius: 10px;    
+    padding: 10px;          
+    margin: 20px; 
+    background-color: white;
 }
