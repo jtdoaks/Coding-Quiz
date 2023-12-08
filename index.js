@@ -15,21 +15,21 @@ let finalScoreEl = document.querySelector("#finalScore");
 let finalScore = 0;
 let highScores = JSON.parse(localStorage.getItem("high-scores")) || [];
 
-let questions = [{ question: "Which pokemon does Ash get to start pokemon?", answers: ["Charmander", "Squirtle", "Bulbasaur", "Pikachu"], correctAnswer: "Pikachu" },
+let questions = [{ question: "Which pokemon does Ash get to start pokemon?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Pikachu" },
 
-{ question: "Which pokemon is able to deal fire damage?", answers: ["Squirtle", "Charmander", "Pikachu", "Bulbasaur",], correctAnswer: "Charmander" },
+{ question: "Which pokemon is able to deal fire damage?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Charmander" },
 
-{ question: "Which pokemon is weak to electric damage?", answers: ["Bulbasaur", "Charmander", "Pikachu", "Squirtle"], correctAnswer: "Squirtle" },
+{ question: "Which pokemon is weak to electric damage?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Squirtle" },
 
-{ question: "Which pokemon is able to learn razor leaf?", answers: ["Squirtle", "Pikachu", "Bulbasaur", "Charmander"], correctAnswer: "Bulbasaur" },
+{ question: "Which pokemon is able to learn Razor Leaf?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Bulbasaur" },
 
 { question: "Which pokemon is blue?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Squirtle" },
 
-{ question: "Which pokemon evolves with a thunder stone?", answers: ["Pikachu", "Bulbasaur", "Charmander", "Squirtle"], correctAnswer: "pickachu" },
+{ question: "Which pokemon evolves with a Thunder Stone?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "pickachu" },
 
-{ question: "Which pokemon is able to weak to water damage?", answers: ["Charmander", "Squirtle", "Bulbasaur", "Squirtle"], correctAnswer: "Charmander" },
+{ question: "Which pokemon is able to weak to water damage?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Charmander" },
 
-{ question: "Which pokemon evoles to ivysaur?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Bulbasaur" },
+{ question: "Which pokemon evoles to Ivysaur?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Bulbasaur" },
 ];
 
 

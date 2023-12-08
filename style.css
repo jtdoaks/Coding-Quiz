@@ -4,8 +4,6 @@
     margin-top: 20px;
 }
 
-
-
 .hide {
     display: none
 }
@@ -13,8 +11,8 @@
 body {
     font-family: 'Comic Sans MS', sans-serif;
     text-align: center;
-    background-color: #FFD700; 
-    color: #FF4500; 
+    background: linear-gradient(to bottom right, pink, #5858f5);
+    height: 100vh;
 }
 
 
@@ -22,7 +20,17 @@ body {
     margin: 20px;
 }
 
-#start, #viewHighScores {
+#start {
+    font-family: 'Comic Sans MS', sans-serif;
+    font-size: 30px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: #00CED1; 
+    color: #fff;
+    cursor: pointer;
+}
+
+#viewHighScores {
     font-family: 'Comic Sans MS', sans-serif;
     font-size: 18px;
     padding: 10px 20px;
@@ -38,11 +46,10 @@ body {
 
 button {
     font-family: 'Comic Sans MS', sans-serif;
-    font-size: 16px;
+    font-size: 20px;
     padding: 10px 20px;
     margin: 10px;
     border-radius: 20px;
-    background-color: #FF6347; 
     color: black;
     cursor: pointer;
 }
@@ -58,7 +65,7 @@ button {
     padding: 10px;
     margin: 10px;
     border-radius: 20px;
-    background-color: #00FF7F; /* SpringGreen button color */
+    background-color: #00FF7F; 
     color: #fff;
     cursor: pointer;
 }
@@ -74,13 +81,9 @@ button {
     margin-bottom: 10px;
 }
 
-.hide {
-    display: none;
-}
-
 
 #answer1 {
-    background-color: #df2b0b; 
+    background-color: #00FF00; 
 }
 
 #answer2 {
@@ -88,7 +91,7 @@ button {
 }
 
 #answer3 {
-    background-color: #00FF00; 
+    background-color: #df2b0b; 
 }
 
 #answer4 {
