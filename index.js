@@ -1,4 +1,4 @@
-let timer = 90;
+let timer = 60;
 let timerInterval;
 let quizDiv = document.querySelector("#quiz");
 let beginDiv = document.querySelector("#begin");
