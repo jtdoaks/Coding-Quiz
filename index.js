@@ -15,21 +15,25 @@ let finalScoreEl = document.querySelector("#finalScore");
 let finalScore = 0;
 let highScores = JSON.parse(localStorage.getItem("high-scores")) || [];
 
-let questions = [{ question: "Which pokemon does Ash get to start pokemon?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Pikachu" },
+let questions = [{ question: "Which POKéMON is Ash Ketchum's first partner?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Pikachu" },
 
-{ question: "Which pokemon is able to deal fire damage?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Charmander" },
+{ question: "Which POKéMON is able to deal Fire damage?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Charmander" },
 
-{ question: "Which pokemon is weak to electric damage?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Squirtle" },
+{ question: "Which POKéMON is weak to Electric damage?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Squirtle" },
 
-{ question: "Which pokemon is able to learn Razor Leaf?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Bulbasaur" },
+{ question: "Which POKéMON is able to learn Razor Leaf?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Bulbasaur" },
 
-{ question: "Which pokemon is blue?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Squirtle" },
+{ question: "Which POKéMON is blue?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Squirtle" },
 
-{ question: "Which pokemon evolves with a Thunder Stone?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "pickachu" },
+{ question: "Which POKéMON evolves with a Thunder Stone?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Pikachu" },
 
-{ question: "Which pokemon is able to weak to water damage?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Charmander" },
+{ question: "Which POKéMON is able to weak to Water damage?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Charmander" },
 
-{ question: "Which pokemon evoles to Ivysaur?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Bulbasaur" },
+{ question: "Which POKéMON evoles to Wartortle?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Squirtle" },
+
+{ question: "Which POKéMON has a flame on it's tail?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Charmander" },
+
+{ question: "Which POKéMON is a Grass type?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Charmander" },
 ];
 
 
@@ -72,7 +76,7 @@ function startQuiz() {
 
         if (timer <= 0) {
             clearInterval(timerInterval)
-
+            endGame();
 
         }
     }, 1000);
@@ -146,3 +150,9 @@ viewHighScores.addEventListener('click', function (event){
         leaderboard.append(li);
     }
 })
+
+
+function endGame() {
+    
+    document.querySelector("#timerDiv").style.display = "none";
+}
