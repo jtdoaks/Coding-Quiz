@@ -45,6 +45,9 @@ function renderQuestion() {
     if (currentQuestion >= questions.length) {
         clearInterval(timerInterval);
         console.log("game over")
+
+        document.querySelector("#timerDiv").style.display = "none";
+
         finishedEl.classList.toggle("hide")
         quizDiv.classList.toggle("hide")
         inputs.classList.toggle("hide")
@@ -76,7 +79,7 @@ function startQuiz() {
 
         if (timer <= 0) {
             clearInterval(timerInterval)
-            endGame();
+            
 
         }
     }, 1000);
