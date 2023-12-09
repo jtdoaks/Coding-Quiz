@@ -33,7 +33,7 @@ let questions = [{ question: "Which POKéMON is Ash Ketchum's first partner?", a
 
 { question: "Which POKéMON has a flame on it's tail?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Charmander" },
 
-{ question: "Which POKéMON is a Grass type?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Charmander" },
+{ question: "Which POKéMON is a Grass type?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Bulbasaur" },
 ];
 
 
@@ -140,7 +140,13 @@ inputs.addEventListener("submit", function (event) {
         li.textContent = "player: " + element.initials + " -- score: " + element.score;
         leaderboard.append(li);
     }
-})
+    document.querySelector("#playAgain").classList.remove("hide");
+});
+
+document.querySelector("#playAgain").addEventListener("click", function () {
+    // Reset the game state and show the start screen
+    resetGame();
+});
 
 viewHighScores.addEventListener('click', function (event){
     event.preventDefault();
@@ -158,4 +164,19 @@ viewHighScores.addEventListener('click', function (event){
 function endGame() {
     
     document.querySelector("#timerDiv").style.display = "none";
+}
+
+function resetGame() {
+    currentQuestion = 0;
+    timer = 60;
+
+    // Hide elements
+    finishedEl.classList.add("hide");
+    leaderboard.classList.add("hide");
+    finalScoreEl.classList.add("hide");
+    document.querySelector("#timerDiv").style.display = "none";
+
+    // Show the start screen
+    beginDiv.classList.remove("hide");
+    document.querySelector("#playAgain").classList.add("hide");
 }

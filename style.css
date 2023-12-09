@@ -11,7 +11,7 @@
 body {
     font-family: 'Comic Sans MS', sans-serif;
     text-align: center;
-    background: linear-gradient(to bottom right, pink, #5858f5);
+    background:  rgb(247, 168, 181);
     height: 100vh;
 }
 
@@ -118,4 +118,18 @@ button {
     width: fit-content; 
     font-size: px;
     margin: 0 auto;
+}
+
+#playAgain {
+    font-family: 'Comic Sans MS', sans-serif;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: #00CED1;
+    color: #fff;
+    cursor: pointer;
+}
+
+#playAgain.hide {
+    display: none;
 }
