@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>POKéMON Quiz</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,8 +13,12 @@
 
     <header class="header">
         <h3 id="viewHighScores">View High Scores</h3>
-        <h3 id="timerEl"> </h3>
     </header>
+
+    <div id="timerDiv">
+        <div id="timerEl"> </div>
+    </div>
+
 
     <div id="begin">
         <button id="start">Start Quiz</button>
@@ -32,6 +36,8 @@
         <input type="submit" value="Submit">
     </form>
 
+    <button id="playAgain" class="hide">Play Again</button>
+
 
     <div id="quiz" class="hide">
 
@@ -46,6 +52,8 @@
     </div>
     <div>
         <!-- add high scores here -->
+        <div id="highScoresHeader" class="hide">High Scores</div>
+
         <ol id="leaderboard" class="hide">
 
         </ol>
