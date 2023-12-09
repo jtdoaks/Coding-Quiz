@@ -54,7 +54,7 @@ Feel free to customize the quiz questions, styling, or add more features to enha
 
 
 ## Link
-- 
+- https://jtdoaks.github.io/Coding-Quiz/ 
 
 ## Author
 John Doaks
