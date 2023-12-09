@@ -1,4 +1,4 @@
-let timer = 100;
+let timer = 60;
 let timerInterval;
 let quizDiv = document.querySelector("#quiz");
 let beginDiv = document.querySelector("#begin");
@@ -15,21 +15,25 @@ let finalScoreEl = document.querySelector("#finalScore");
 let finalScore = 0;
 let highScores = JSON.parse(localStorage.getItem("high-scores")) || [];
 
-let questions = [{ question: "Which pokemon does Ash get to start pokemon?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Pikachu" },
+let questions = [{ question: "Which POKéMON is Ash Ketchum's first partner?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Pikachu" },
 
-{ question: "Which pokemon is able to deal fire damage?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Charmander" },
+{ question: "Which POKéMON is able to deal Fire damage?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Charmander" },
 
-{ question: "Which pokemon is weak to electric damage?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Squirtle" },
+{ question: "Which POKéMON is weak to Electric damage?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Squirtle" },
 
-{ question: "Which pokemon is able to learn Razor Leaf?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Bulbasaur" },
+{ question: "Which POKéMON is able to learn Razor Leaf?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Bulbasaur" },
 
-{ question: "Which pokemon is blue?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Squirtle" },
+{ question: "Which POKéMON is blue?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Squirtle" },
 
-{ question: "Which pokemon evolves with a Thunder Stone?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "pickachu" },
+{ question: "Which POKéMON evolves with a Thunder Stone?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Pikachu" },
 
-{ question: "Which pokemon is able to weak to water damage?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Charmander" },
+{ question: "Which POKéMON is able to weak to Water damage?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Charmander" },
 
-{ question: "Which pokemon evoles to Ivysaur?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Bulbasaur" },
+{ question: "Which POKéMON evoles to Wartortle?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Squirtle" },
+
+{ question: "Which POKéMON has a flame on it's tail?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Charmander" },
+
+{ question: "Which POKéMON is a Grass type?", answers: ["Bulbasaur", "Squirtle", "Charmander", "Pikachu"], correctAnswer: "Bulbasaur" },
 ];
 
 
@@ -41,6 +45,9 @@ function renderQuestion() {
     if (currentQuestion >= questions.length) {
         clearInterval(timerInterval);
         console.log("game over")
+
+        document.querySelector("#timerDiv").style.display = "none";
+
         finishedEl.classList.toggle("hide")
         quizDiv.classList.toggle("hide")
         inputs.classList.toggle("hide")
@@ -67,6 +74,9 @@ function startQuiz() {
     timerInterval = setInterval(function () {
         timer--
         document.querySelector("#timerEl").textContent = timer
+
+        timerBackground()
+
         if (timer <= 0) {
             clearInterval(timerInterval)
 
@@ -76,8 +86,26 @@ function startQuiz() {
 
     beginDiv.classList.toggle("hide")
     quizDiv.classList.toggle("hide")
+    document.querySelector("#timerDiv").style.display = "block";
 }
 
+function timerBackground() {
+    let timerDiv = document.querySelector("#timerDiv");
+
+
+    if (timer <= 10) {
+        timerDiv.style.backgroundColor = "red";
+    } else if (timer <= 30) {
+        timerDiv.style.backgroundColor = "orange";
+    } else if (timer <= 60) {
+        timerDiv.style.backgroundColor = "green";
+    } else {
+        timerDiv.style.backgroundColor = "#fff";
+
+    }
+
+
+}
 
 quizDiv.addEventListener("click", function (event) {
 
@@ -112,12 +140,22 @@ inputs.addEventListener("submit", function (event) {
         li.textContent = "player: " + element.initials + " -- score: " + element.score;
         leaderboard.append(li);
     }
-})
+    document.querySelector("#playAgain").classList.remove("hide");
+});
 
-viewHighScores.addEventListener('click', function (event){
+document.querySelector("#playAgain").addEventListener("click", function () {
+    // Reset the game state and show the start screen
+    resetGame();
+});
+
+viewHighScores.addEventListener('click', function (event) {
     event.preventDefault();
-    finishedEl.classList.toggle("hide");
+    finishedEl.classList.add("hide");
     leaderboard.classList.toggle("hide");
+    document.querySelector("#highScoresHeader").classList.toggle("hide");
+
+    // Sort highScores array from high to low
+    highScores.sort((a, b) => b.score - a.score);
     for (let i = 0; i < highScores.length; i++) {
         const element = highScores[i];
         let li = document.createElement("li");
@@ -125,3 +163,24 @@ viewHighScores.addEventListener('click', function (event){
         leaderboard.append(li);
     }
 })
+
+
+function endGame() {
+
+    document.querySelector("#timerDiv").style.display = "none";
+}
+
+function resetGame() {
+    currentQuestion = 0;
+    timer = 60;
+
+    // Hide elements
+    finishedEl.classList.add("hide");
+    leaderboard.classList.add("hide");
+    finalScoreEl.classList.add("hide");
+    document.querySelector("#timerDiv").style.display = "none";
+
+    // Show the start screen
+    beginDiv.classList.remove("hide");
+    document.querySelector("#playAgain").classList.add("hide");
+}
