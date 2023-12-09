@@ -79,7 +79,7 @@ function startQuiz() {
 
         if (timer <= 0) {
             clearInterval(timerInterval)
-            
+
 
         }
     }, 1000);
@@ -92,7 +92,7 @@ function startQuiz() {
 function timerBackground() {
     let timerDiv = document.querySelector("#timerDiv");
 
-    
+
     if (timer <= 10) {
         timerDiv.style.backgroundColor = "red";
     } else if (timer <= 30) {
@@ -100,11 +100,11 @@ function timerBackground() {
     } else if (timer <= 60) {
         timerDiv.style.backgroundColor = "green";
     } else {
-        timerDiv.style.backgroundColor = "#fff"; 
+        timerDiv.style.backgroundColor = "#fff";
 
     }
 
-   
+
 }
 
 quizDiv.addEventListener("click", function (event) {
@@ -148,10 +148,14 @@ document.querySelector("#playAgain").addEventListener("click", function () {
     resetGame();
 });
 
-viewHighScores.addEventListener('click', function (event){
+viewHighScores.addEventListener('click', function (event) {
     event.preventDefault();
-    finishedEl.classList.toggle("hide");
+    finishedEl.classList.add("hide");
     leaderboard.classList.toggle("hide");
+    document.querySelector("#highScoresHeader").classList.toggle("hide");
+
+    // Sort highScores array from high to low
+    highScores.sort((a, b) => b.score - a.score);
     for (let i = 0; i < highScores.length; i++) {
         const element = highScores[i];
         let li = document.createElement("li");
@@ -162,7 +166,7 @@ viewHighScores.addEventListener('click', function (event){
 
 
 function endGame() {
-    
+
     document.querySelector("#timerDiv").style.display = "none";
 }
 
